@@ -1,0 +1,114 @@
+Aim
+To implement light and dark mode functionality.
+
+Algorithm
+STEP 1 : Create the basic HTML structure for the webpage. 
+STEP 2 : Define CSS variables for theme colors. 
+STEP 3 : Create a dark theme using data attributes. 
+STEP 4 : Apply base styles using CSS variables. 
+STEP 5 : Add a theme toggle button.
+STEP 6 : Write JavaScript to detect the current theme. 
+STEP 7 : Toggle between light and dark mode. 
+STEP 8 : Apply smooth transition effects. 
+STEP 9 : Test the theme toggle functionality.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dark / Light Mode</title>
+
+  <style>
+    /* ===== THEME VARIABLES ===== */
+    :root {
+      --bg-color: #f4f6f8;
+      --text-color: #111827;
+      --card-bg: #ffffff;
+      --border-color: #e5e7eb;
+      --button-bg: #111827;
+      --button-text: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #e5e7eb;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+      --button-bg: #e5e7eb;
+      --button-text: #111827;
+    }
+
+    /* ===== BASE STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      width: 320px;
+      text-align: center;
+      transition: background 0.3s, border 0.3s;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 24px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      background: var(--button-bg);
+      color: var(--button-text);
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Theme Toggle</h1>
+    <p>Click the button to switch between Light and Dark mode.</p>
+    <button id="toggleTheme">Toggle Theme</button>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleTheme");
+    const body = document.body;
+
+    toggleBtn.addEventListener("click", () => {
+      const currentTheme = body.getAttribute("data-theme");
+
+      if (currentTheme === "dark") {
+        body.removeAttribute("data-theme");
+      } else {
+        body.setAttribute("data-theme", "dark");
+      }
+    });
+  </script>
+</body>
+</html>
