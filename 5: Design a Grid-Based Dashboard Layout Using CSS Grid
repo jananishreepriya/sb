@@ -1,0 +1,178 @@
+Aim
+To design a responsive dashboard layout using CSS Grid.
+
+Algorithm
+STEP 1 : Create the basic HTML structure for the dashboard. 
+STEP 2 : Divide the layout into header, sidebar, and content area. 
+STEP 3 : Apply CSS Grid to the main container. 
+STEP 4 : Define grid rows, columns, and areas. 
+STEP 5 : Design the header section. 
+STEP 6 : Create the sidebar navigation menu. 
+STEP 7 : Design the main content area using cards. 
+STEP 8 : Apply styles such as colors and spacing. 
+STEP 9 : Test responsiveness using media queries.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grid Dashboard</title>
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    /* ===== MAIN DASHBOARD GRID ===== */
+    .dashboard {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: 64px 1fr;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      grid-area: header;
+      background: #ffffff;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .header h1 {
+      font-size: 20px;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      grid-area: sidebar;
+      background: #111827;
+      color: #ffffff;
+      padding: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      padding: 12px 0;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    .sidebar li:hover {
+      opacity: 1;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main {
+      grid-area: main;
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+    }
+
+    /* ===== STAT CARDS ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ===== CONTENT GRID ===== */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      min-height: 200px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .panel.large {
+      grid-row: span 2;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "main";
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard">
+
+    <aside class="sidebar">
+      <ul>
+        <li>Dashboard</li>
+        <li>Analytics</li>
+        <li>Users</li>
+        <li>Settings</li>
+      </ul>
+    </aside>
+
+    <header class="header">
+      <h1>Dashboard</h1>
+      <div>👤 jan</div>
+    </header>
+
+    <main class="main">
+      <section class="cards">
+        <div class="card">Revenue</div>
+        <div class="card">Users</div>
+        <div class="card">Sessions</div>
+        <div class="card">Conversions</div>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel large">Chart Area</div>
+        <div class="panel">Recent Activity</div>
+        <div class="panel">Notifications</div>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>
