@@ -1,0 +1,125 @@
+Aim
+To develop a responsive navigation menu using HTML, CSS, and JavaScript.
+
+Algorithm
+STEP 1 : Create the basic HTML structure using <nav>, <ul>, and <li> elements. 
+STEP 2 : Add navigation links such as Home, About, Services, and Contact. 
+STEP 3 : Use CSS flexbox to align navigation items. 
+STEP 4 : Style the navigation bar with colors and fonts. 
+STEP 5 : Apply media queries to detect smaller screen sizes. 
+STEP 6 : Hide navigation links on small screens. 
+STEP 7 : Display the hamburger menu icon for mobile view.
+STEP 8 : Write JavaScript to toggle menu visibility. 
+STEP 9 : Test the menu on different screen sizes.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Navigation Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar container */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Navigation links */
+        ul {
+            list-style: none;
+            display: flex;
+        }
+
+        ul li {
+            margin-left: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        ul li a:hover {
+            color: #00c3ff;
+        }
+
+        /* Hamburger menu */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        } 
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            ul {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                flex-direction: column;
+                display: none;
+            }
+
+            ul li {
+                text-align: center;
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            ul.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">MyApp</div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <ul id="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("nav-links");
+            console.log(navLinks);
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
