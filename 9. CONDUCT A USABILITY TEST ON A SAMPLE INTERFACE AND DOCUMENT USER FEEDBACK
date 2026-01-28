@@ -1,0 +1,18 @@
+Aim
+
+To conduct usability testing on a sample user interface in order to evaluate user interaction and document user feedback.
+
+Algorithm
+
+Step 1: Select the sample user interface to be tested using a UI tool.
+Step 2: Define usability test cases based on common user interactions.
+Step 3: Execute the following test cases:
+TC1: Check whether the product name and image are clear and visible.
+TC2: Verify whether users can easily understand the category.
+TC3: Observe whether navigation options are easy to use.
+TC4: Test whether the call-to-action button is clickable and responsive.
+TC5: Evaluate text readability, including font size and style.
+TC6: Check visual consistency across different screens.
+TC7: Observe user response time and ease of task completion.
+TC8: Collect user feedback on overall experience and satisfaction level.
+Step 4: Analyze the test results and document usability issues along with improvement suggestions.
