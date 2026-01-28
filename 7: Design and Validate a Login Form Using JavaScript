@@ -1,0 +1,121 @@
+Aim
+To design and validate a login form using JavaScript.
+
+Algorithm
+STEP 1 : Create the HTML structure for the login form. 
+STEP 2 : Add input fields for username and password. 
+STEP 3 : Style the form using CSS. STEP 4 : Attach an onsubmit event handler. 
+STEP 5 : Retrieve user input values using JavaScript. 
+STEP 6 : Check if the username field is empty. 
+STEP 7 : Validate the password length. 
+STEP 8 : Display error messages dynamically. 
+STEP 9 : Allow form submission only if inputs are valid.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Form Validation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    button {
+      margin-top: 16px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #111827;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form class="form-container" onsubmit="return validateForm()">
+    <h2>Login</h2>
+
+    <label>Name</label>
+    <input type="text" id="name" />
+    <div class="error" id="nameError"></div>
+
+    <label>Password</label>
+    <input type="password" id="password" />
+    <div class="error" id="passwordError"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      let isValid = true;
+
+      // Reset errors
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      // Name validation
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required";
+        isValid = false;
+      }
+
+      // Password validation
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent =
+          "Password must be at least 6 characters";
+        isValid = false;
+      }
+
+      return isValid; // false prevents form submit
+    }
+  </script>
+
+</body>
+</html>
